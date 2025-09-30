@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entrando no Servidor Roblox...</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; background-color: #23272a; color: #ffffff; text-align: center; padding-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Redirecionando para o Roblox</h1>
+    <p>Se o Roblox não abrir automaticamente, verifique se ele está instalado.</p>
+
+    <script>
+        function joinGame() {
+            const params = new URLSearchParams(window.location.search);
+            
+            const placeId = params.get('placeId');
+            const gameInstanceId = params.get('gameInstanceId');
+
+            if (placeId && gameInstanceId) {
+                const robloxURI = `roblox://placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
+                
+                window.location.href = robloxURI;
+            } else {
+                document.body.innerHTML = '<h1>Erro: Parâmetros "placeId" ou "gameInstanceId" não encontrados na URL.</h1>';
+            }
+        }
+
+        joinGame();
+    </script>
+</body>
+</html>
